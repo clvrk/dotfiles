@@ -1,0 +1,17 @@
+!Xorg
+Xft.dpi:		120
+Xft.antialias:		1
+
+!urxvt
+URxvt.cursorBlink: 	true
+URxvt.cursorUnderline:	true
+URxvt.scrollBar: 	false
+URxvt.foreground: 	white
+URxvt.background:	rgba:0c00/0c00/0c00/c000
+URxvt.depth:		32
+!URxvt.blurRadius:	32
+URxvt.font:		xft:Source Code Pro:size=16
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.iso14755:		false
+URxvt.iso14755_52:	false

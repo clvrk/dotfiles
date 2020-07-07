@@ -16,4 +16,8 @@ fi
 # Set aliases
 alias ll='ls -l'
 alias bpct='echo "Battery: $(cat /sys/class/power_supply/BAT0/capacity)%"'
-alias dotfiles='git --git-dir=$HOME/Documents/git-repos/dotfiles --work-tree=$HOME'
+alias dotfiles='git --git-dir=$HOME/Documents/git-repos/dotfiles.git --work-tree=$HOME'
+alias cdgit='cd $HOME/Documents/git-repos'
+alias r='ranger'
+alias v='vim'
+alias kp='sh $HOME/.scripts/pull_kdbx-gdrive.sh'

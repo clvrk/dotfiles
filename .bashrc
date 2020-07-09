@@ -14,7 +14,7 @@ if [[ "$(tty)" = "/dev/tty1" ]]; then
 fi
 
 # Set aliases
-alias ll='ls -l'
+alias ll='ls -l -h'
 alias bpct='echo "Battery: $(cat /sys/class/power_supply/BAT0/capacity)%"'
 alias dotfiles='git --git-dir=$HOME/Documents/git-repos/dotfiles.git --work-tree=$HOME'
 alias cdgit='cd $HOME/Documents/git-repos'

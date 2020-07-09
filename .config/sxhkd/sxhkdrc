@@ -1,4 +1,15 @@
 #
+# Custom hotkeys
+#
+
+ctrl + Print
+	$(cd $HOME/Documents/Pictures/Screenshots; scrot); notify-send "Screenshot taken!"
+
+
+ctrl + alt + Print
+	$(cd $HOME/Documents/Pictures/Screenshots; scrot --select); notify-send "Screenshot taken!"
+
+#
 # wm independent hotkeys
 #
 

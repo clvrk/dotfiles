@@ -16,6 +16,15 @@ TEMP_DB_PATH=$TEMP_DIR/_db.kdbx
 GDRIVE_DIR="$HOME/Cloud/Google Drive"
 REMOTE_PATH='Documents/Private/Database.kdbx'
 
+function rmTmpDb {
+	# Check if previous *.kdbx exists
+	if [[ -f $TEMP_DB_PATH ]]; then
+		printf "Removing ${1}temporary database file..."
+		rm -v $TEMP_DB_PATH
+		printf " Done!\n"
+	fi
+}
+
 ###
 if [[ -z $GDRIVE_DIR ]]; then
 	echo "\"credentials.json\" not specified..."
@@ -32,21 +41,11 @@ if [[ ! -d $TEMP_DIR ]]; then
 	mkdir $TEMP_DIR
 fi
 
-# Check if previous *.kdbx exists
-if [[ -f $TEMP_DB_PATH ]]; then
-	printf "Previous temporary database file found, removing... "
-	rm -v $TEMP_DB_PATH
-	printf "Done!\n"
-fi
+rmTmpDb "previous "
 
-printf "Pulling database file from remote... "
+printf "Pulling database file from remote..."
 $(cd "$GDRIVE_DIR"; drive pull -piped "$REMOTE_PATH" > $TEMP_DB_PATH)
-printf "Done!\n"
+printf " Done!\n"
 keepass $TEMP_DB_PATH
 
-if [[ -f $TEMP_DB_PATH ]]; then
-	printf "Removing temporary database file... "
-	rm -v $TEMP_DB_PATH
-	printf "Done!\n"
-fi
-
+rmTmpDb 

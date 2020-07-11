@@ -14,10 +14,10 @@ if [[ "$(tty)" = "/dev/tty1" ]]; then
 fi
 
 # Set aliases
-alias ll='ls -l -h'
+alias ll='ls -lh'
 alias bpct='echo "Battery: $(cat /sys/class/power_supply/BAT0/capacity)%"'
 alias dotfiles='git --git-dir=$HOME/Documents/git-repos/dotfiles.git --work-tree=$HOME'
 alias cdgit='cd $HOME/Documents/git-repos'
 alias r='ranger'
-alias v='vim'
+alias v='nvim'
 alias kp='sh $HOME/.scripts/pull_kdbx-gdrive.sh'

@@ -3,6 +3,7 @@
 !Xft.antialias:			1
 
 !urxvt
+URxvt.perl-ext-common: 		default,resize-font
 URxvt.cursorBlink: 		true
 URxvt.cursorUnderline:		true
 URxvt.scrollBar: 		false
@@ -11,7 +12,12 @@ URxvt.background:		rgba:0c00/0c00/0c00/c000
 URxvt.depth:			32
 !URxvt.blurRadius:		32
 URxvt.font:			xft:Ubuntu Mono:size=16
-URxvt.keysym.Shift-Control-C: 	eval:selection_to_clipboard
+! COPY & PASTE
+! Unbind previous copy & paste keyboard shortcuts
+URxvt.keysym.Control-Meta-c: 	builtin-string:
+URxvt.keysym.Control-Meta-v: 	builtin-string:
+! Bind to new keyboard shortcuts
 URxvt.keysym.Shift-Control-V: 	eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: 	eval:selection_to_clipboard
 URxvt.iso14755:			false
 URxvt.iso14755_52:		false

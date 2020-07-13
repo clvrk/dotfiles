@@ -20,7 +20,7 @@ function rmTmpDb {
 	# Check if previous *.kdbx exists
 	if [[ -f $TEMP_DB_PATH ]]; then
 		printf "Removing ${1}temporary database file..."
-		rm -v $TEMP_DB_PATH
+		rm $TEMP_DB_PATH
 		printf " Done!\n"
 	fi
 }

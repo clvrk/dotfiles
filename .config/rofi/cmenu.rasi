@@ -4,10 +4,11 @@
  * Copyright: Dave Davenport
  */
 * {
-    background-color:      #222222;
-    border-color:          White;
-    text-color:           White;
-    font:            "Ubuntu Mono 11";
+    background-color:		#222222;
+    background-alt-color:  	#444444;
+    //border-color:          	White;
+    text-color:           	White;
+    font:            		"Ubuntu Mono NF 11";
 }
 
 #window {
@@ -15,8 +16,8 @@
     location:   north;
     width:      100%;
     height:	27px;
-    padding:    4px;
     children:   [ horibox ];
+    padding:	0 0 0 8px;
 }
 
 #horibox {
@@ -28,16 +29,21 @@
     layout:     horizontal;
     spacing:    5px;
     lines:      100;
+    //background-color: red;
 }
 
 #entry {
     expand:     false;
     width:      10em;
+    //background-color: green;
+    margin: 0 0 0 10px;
 }
 
 #element {
-    padding: 0px 2px;
+    //padding: 0px 2px;
+    //background-color: blue;
 }
+
 #element selected {
-    background-color: 	#444444;
+    background-color: 	@background-alt-color;
 }

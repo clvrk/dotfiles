@@ -1,8 +1,11 @@
-!Xorg
+! Xorg !
 !Xft.dpi:			120
 !Xft.antialias:			1
 
-!urxvt
+! Colors !
+color0:				#222
+
+! urxvt !
 URxvt.perl-ext-common: 		default,resize-font
 URxvt.cursorBlink: 		true
 URxvt.cursorUnderline:		true

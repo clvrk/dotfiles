@@ -34,6 +34,6 @@ fi
 
 # Keyboard layout & window manager
 setxkbmap de &
-xwallpaper --zoom ~/Documents/Pictures/Wallpapers/Nature/fern01.jpg
+xwallpaper --zoom "$HOME/Documents/Pictures/Wallpapers/Architecture/wall01.png"
 picom -b --experimental-backends
 exec bspwm

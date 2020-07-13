@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+# Prompt
 PS1='[\u@\h \W]\$ '
 
 # Start X server on login
@@ -14,6 +14,7 @@ if [[ "$(tty)" = "/dev/tty1" ]]; then
 fi
 
 # Set aliases
+alias ls='ls --color=auto'
 alias ll='ls -lh'
 alias bpct='echo "Battery: $(cat /sys/class/power_supply/BAT0/capacity)%"'
 alias dotfiles='git --git-dir=$HOME/Documents/git-repos/dotfiles.git --work-tree=$HOME'

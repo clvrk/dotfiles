@@ -1,12 +1,15 @@
 ! Xorg !
-!Xft.dpi:			120
-!Xft.antialias:			1
+! Set high DPI on every system except the PC
+#ifndef SRVR_clarch_pc
+Xft.dpi:			120
+#endif
+Xft.antialias:			1
 
 ! Colors !
 color0:				#222
 
 ! urxvt !
-URxvt.perl-ext-common: 		default,resize-font
+URxvt.perl-ext-common: 		default,matcher,resize-font
 URxvt.cursorBlink: 		true
 URxvt.cursorUnderline:		true
 URxvt.scrollBar: 		false
@@ -24,3 +27,7 @@ URxvt.keysym.Shift-Control-V: 	eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: 	eval:selection_to_clipboard
 URxvt.iso14755:			false
 URxvt.iso14755_52:		false
+! Clickable links
+URxvt.url-launcher: 		/usr/bin/xdg-open
+URxvt.matcher.button: 		1
+URxvt.matcher.rend.0: 		Uline Bold fg4

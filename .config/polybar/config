@@ -290,7 +290,7 @@ animation-discharging-framerate = 750
 [module/temperature]
 type = internal/temperature
 thermal-zone = 8
-warn-temperature = 60
+warn-temperature = 90
 
 format = <label>
 format-underline = #f50a4d

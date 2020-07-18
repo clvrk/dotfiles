@@ -13,7 +13,7 @@ TEMP_DIR=$SCRIPT_PATH/tmp
 TEMP_DB_PATH=$TEMP_DIR/_db.kdbx
 
 # CONFIGURATION
-GDRIVE_DIR="$HOME/Cloud/Google Drive"
+GDRIVE_DIR="$HOME/Documents/Cloud/Google Drive"
 REMOTE_PATH='Documents/Private/Database.kdbx'
 
 function rmTmpDb {
@@ -46,6 +46,6 @@ rmTmpDb "previous "
 printf "Pulling database file from remote..."
 $(cd "$GDRIVE_DIR"; drive pull -piped "$REMOTE_PATH" > $TEMP_DB_PATH)
 printf " Done!\n"
-keepass $TEMP_DB_PATH
+keepassxc $TEMP_DB_PATH
 
 rmTmpDb 

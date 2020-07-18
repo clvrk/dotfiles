@@ -1,6 +1,6 @@
 ! Xorg !
 ! Set high DPI on every system except the PC
-#ifndef SRVR_clarch_pc
+#ifdef SRVR_clarch_xps13
 Xft.dpi:			120
 #endif
 Xft.antialias:			1

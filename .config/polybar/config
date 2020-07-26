@@ -51,7 +51,7 @@ font-2 = Ubuntu Mono NF:pixelsize=22;4
 
 modules-left = bspwm
 modules-center = mpd xwindow
-modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu temperature wlan eth battery date 
+modules-right = filesystem xbacklight alsa xkeyboard memory cpu temperature wlan eth battery date 
 
 tray-position = right
 tray-padding = 2
@@ -224,6 +224,38 @@ format-prefix-foreground = ${colors.icon}
 format-underline = #0a6cf5
 
 label = %date% %time%
+
+[module/alsa]
+type = internal/alsa
+
+master-mixer = "UMC1820 Output"
+interval = 5
+mapped = true
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = "婢 "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = "=="
+bar-volume-fill-font = 2
+bar-volume-empty = "=="
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/pulseaudio]
 type = internal/pulseaudio

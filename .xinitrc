@@ -39,4 +39,5 @@ export PATH=$PATH:$HOME/bin
 setxkbmap de &
 xwallpaper --zoom "$HOME/Documents/Pictures/Wallpapers/Architecture/wall01.png"
 picom -b --experimental-backends
+[ ! -z $(pacman -Qqs qjackctl) ] && qjackctl &
 exec bspwm

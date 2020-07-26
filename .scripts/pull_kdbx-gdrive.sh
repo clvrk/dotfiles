@@ -13,7 +13,7 @@ TEMP_DIR=$SCRIPT_PATH/tmp
 TEMP_DB_PATH=$TEMP_DIR/_db.kdbx
 
 # CONFIGURATION
-GDRIVE_DIR="$HOME/Documents/Cloud/Google Drive"
+GDRIVE_DIR="$HOME/Cloud/Google Drive"
 REMOTE_PATH='Documents/Private/Database.kdbx'
 
 function rmTmpDb {

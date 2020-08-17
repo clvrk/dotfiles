@@ -37,7 +37,8 @@ export PATH=$PATH:$HOME/bin
 
 # Keyboard layout & window manager
 setxkbmap de &
-xwallpaper --zoom "$HOME/Documents/Pictures/Wallpapers/Architecture/wall01.png"
+xwallpaper --zoom "$HOME/Documents/Pictures/Wallpapers/Architecture/wall01.png" &
+#[ ! -z $(pacman -Qqs qjackctl) ] && qjackctl &
+[ ! -z $(pacman -Qqs cadence) ] && cadence-session-start --start &
 picom -b --experimental-backends
-[ ! -z $(pacman -Qqs qjackctl) ] && qjackctl &
 exec bspwm

@@ -1,6 +1,6 @@
 ! Xorg !
-! Set high DPI on every system except the PC
-#ifdef SRVR_clarch_xps13
+! Set high DPI on laptop, except external displays are connected
+#if defined(SRVR_clarch_xps13) && NUM_DISPLAYS == 1
 Xft.dpi:			120
 #endif
 Xft.antialias:			1

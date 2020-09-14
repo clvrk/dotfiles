@@ -31,8 +31,6 @@ icon = #777
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 27
-;offset-x = 1%
-;offset-y = 1%
 radius = 0.0
 fixed-center = true
 
@@ -49,9 +47,9 @@ font-0 = Ubuntu Mono:pixelsize=11;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = Ubuntu Mono NF:pixelsize=22;4
 
-modules-left = bspwm
-modules-center = mpd xwindow
-modules-right = filesystem xbacklight alsa xkeyboard memory cpu temperature wlan eth battery date 
+modules-left = bspwm xwindow
+modules-center = 
+modules-right = filesystem xbacklight alsa xkeyboard memory cpu temperature network-traffic wlan eth battery date 
 
 tray-position = right
 tray-padding = 2
@@ -69,7 +67,8 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+;label = %title:0:30:...%
+label = %title%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -228,6 +227,7 @@ label = %date% %time%
 [module/alsa]
 type = internal/alsa
 
+master-soundcard = "default"
 master-mixer = "UMC1820 Output"
 interval = 5
 mapped = true
@@ -338,34 +338,13 @@ ramp-0 = ""
 ;ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+[module/network-traffic]
+type = custom/script
+exec = sh $HOME/.scripts/polybar-modules/network-traffic.sh -i='*'
+format-prefix = 
+format-prefix-foreground = ${colors.icon}
+format = "<label>"
+interval = 1
 
 [settings]
 screenchange-reload = true

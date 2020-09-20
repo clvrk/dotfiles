@@ -1,34 +1,41 @@
-#
-# Custom hotkeys
-#
+##################
+# Custom hotkeys #
+##################
 
-ctrl + Print
-	$(cd $HOME/Documents/Pictures/Screenshots; scrot); notify-send "Screenshot taken!"
+# Screenshots
+ctrl + {_,alt + }Print
+	RECTANGLE_FORMATTING='%x,%y,%w,%h' && \
+	export OUTPUT_DIRECTORY="$HOME/Pictures/Screenshots" && \
+	{scrot,scrot -a $(slop -f $RECTANGLE_FORMATTING)} -e 'mv $f $$OUTPUT_DIRECTORY && xclip -selection clipboard -t "image/png" $$OUTPUT_DIRECTORY/$n' && \
+	notify-send "Screenshot taken!"
 
+# Volume control
+XF86Audio{Lower,Raise}Volume
+	amixer -c 0 set 'UMC1820 Output' 5%{-,+}
 
-ctrl + alt + Print
-	$(cd $HOME/Documents/Pictures/Screenshots; scrot -a $(slop -f '%x,%y,%w,%h')); notify-send "Screenshot taken!"
+# Backlight control
+XF86MonBrightness{Down,Up}
+	xbacklight -{dec,inc} 10
 
-#
-# wm independent hotkeys
-#
-
-# terminal emulator
+# Terminal emulator
 super + Return
-#	alacritty
 	urxvt
+#	alacritty
 
-# program launcher
+# Program launcher
 super + @space
 	rofi -show run
+
+XF86Search
+	rofi -show ssh
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
-#
-# bspwm hotkeys
-#
+#################
+# bspwm hotkeys #
+#################
 
 # quit/restart bspwm
 super + alt + {q,r}

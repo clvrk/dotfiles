@@ -46,7 +46,7 @@ export PATH=$PATH:$HOME/bin
 
 # Keyboard layout & window manager
 setxkbmap de &
-xwallpaper --zoom "$HOME/Documents/Pictures/Wallpapers/Architecture/wall01.png" &
+xwallpaper --zoom "$HOME/Pictures/Wallpapers/Architecture/wall01.png" &
 
 # Audio daemons
 [ ! -z $(pacman -Qqs qjackctl) ] && qjackctl &

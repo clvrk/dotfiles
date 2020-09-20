@@ -4,14 +4,19 @@
 
 cache_dir="$HOME/.cache/polybar-module_network-traffic"
 interface='*'
+declare -A PREFIXES
 
 [ -d $cache_dir ] || mkdir $cache_dir
 
 i=1
 while [ ! -z "${!i}" ]
 do
+	nextIndex=$((i+1))
+
 	case ${!i} in
-		"-i") nextIndex=$((i+1)); interface="${!nextIndex}" ;;
+		"-i") interface="${!nextIndex}" ;;
+		"--rx-prefix") PREFIXES[rx]="${!nextIndex}" ;;
+		"--tx-prefix") PREFIXES[tx]="${!nextIndex}" ;;
 	esac
 
 	i=$((i+1))	
@@ -28,7 +33,7 @@ then
 		bytes_current=$(($(cat /sys/class/net/${interface}/statistics/${mode}_bytes | paste -sd '+')))
 		echo $bytes_current > $bytefile
 
-		echo $((($bytes_current-$bytes_previous)/1024))
+		printf "%s" "${PREFIXES[$mode]}" "$((($bytes_current-$bytes_previous)/1024)) KiB/s$([ $mode = tx ] || echo ' ')"
 	done
 else
 	echo "Network interface \"${interface}\" does not exist"

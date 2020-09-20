@@ -6,7 +6,33 @@ Xft.dpi:			120
 Xft.antialias:			1
 
 ! Colors !
-color0:				#222
+! special
+*.foreground:   #444444
+*.background:   #222222
+! black
+*.color0:       #282a2e
+*.color8:       #373b41
+! red
+*.color1:       #a54242
+*.color9:       #cc6666
+! green
+*.color2:       #8c9440
+*.color10:      #b5bd68
+! yellow
+*.color3:       #de935f
+*.color11:      #f0c674
+! blue
+*.color4:       #5f819d
+*.color12:      #81a2be
+! magenta
+*.color5:       #85678f
+*.color13:      #b294bb
+! cyan
+*.color6:       #5e8d87
+*.color14:      #8abeb7
+! white
+*.color7:       #707880
+*.color15:      #c5c8c6
 
 ! urxvt !
 URxvt.perl-ext-common: 		default,matcher,resize-font
@@ -17,7 +43,7 @@ URxvt.foreground: 		white
 URxvt.background:		rgba:0c00/0c00/0c00/c000
 URxvt.depth:			32
 !URxvt.blurRadius:		32
-URxvt.font:			xft:Ubuntu Mono:size=16
+URxvt.font:			xft:UbuntuMono Nerd Font:size=16
 ! COPY & PASTE
 ! Unbind previous copy & paste keyboard shortcuts
 URxvt.keysym.Control-Meta-c: 	builtin-string:

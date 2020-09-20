@@ -17,7 +17,7 @@
 ;==========================================================
 
 [colors]
-background = ${xrdb:color0:#222}
+background = ${xrdb:background}
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
@@ -67,8 +67,7 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-;label = %title:0:30:...%
-label = %title%
+label = %title:0:30:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -118,6 +117,8 @@ label-urgent-padding = 2
 label-empty =
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
+
+reverse-scroll = false
 
 [module/mpd]
 type = internal/mpd
@@ -227,7 +228,7 @@ label = %date% %time%
 [module/alsa]
 type = internal/alsa
 
-master-soundcard = "default"
+;master-soundcard = "hw:0"
 master-mixer = "UMC1820 Output"
 interval = 5
 mapped = true
@@ -307,9 +308,11 @@ ramp-capacity-3 = ""
 ramp-capacity-4 = ""
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-3 = ""
+animation-charging-4 = ""
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
@@ -340,10 +343,7 @@ ramp-foreground = ${colors.foreground-alt}
 
 [module/network-traffic]
 type = custom/script
-exec = sh $HOME/.scripts/polybar-modules/network-traffic.sh -i='*'
-format-prefix = 
-format-prefix-foreground = ${colors.icon}
-format = "<label>"
+exec = sh $HOME/.scripts/polybar-modules/network-traffic.sh -i='*' --rx-prefix '%{F#777}%{F-}' --tx-prefix '%{F#777}%{F-}'
 interval = 1
 
 [settings]

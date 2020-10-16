@@ -15,6 +15,7 @@ fi
 
 # Export environment variables
 export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/gh"
+#export XDG_CONFIG_HOME=
 
 # Set aliases
 alias ls='ls --color=auto'

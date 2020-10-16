@@ -19,8 +19,10 @@ XF86MonBrightness{Down,Up}
 
 # Terminal emulator
 super + Return
-	urxvt
-#	alacritty
+	$USER_TERMINAL
+
+super + BackSpace
+	urxvt -e sh -c $USER_FILEMANAGER
 
 # Program launcher
 super + @space

@@ -49,7 +49,7 @@ font-2 = Ubuntu Mono NF:pixelsize=22;4
 
 modules-left = bspwm xwindow
 modules-center = 
-modules-right = filesystem xbacklight alsa xkeyboard memory cpu temperature network-traffic wlan eth battery date 
+modules-right = network-traffic filesystem alsa xkeyboard memory cpu temperature wlan eth battery date power
 
 tray-position = right
 tray-padding = 2
@@ -119,19 +119,6 @@ label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
 reverse-scroll = false
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -251,38 +238,11 @@ bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = |
-bar-volume-indicator-font = 2
+bar-volume-indicator-font = 1
 bar-volume-fill = "=="
-bar-volume-fill-font = 2
+bar-volume-fill-font = 1
 bar-volume-empty = "=="
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
-label-volume-foreground = ${root.foreground}
-
-label-muted = "婢 muted"
-label-muted-foreground = #666
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = "=="
-bar-volume-fill-font = 2
-bar-volume-empty = "=="
-bar-volume-empty-font = 2
+bar-volume-empty-font = 1
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
@@ -336,15 +296,16 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = ""
-;ramp-1 = 
-;ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
-
 [module/network-traffic]
 type = custom/script
 exec = sh $HOME/.scripts/polybar-modules/network-traffic.sh -i='*' --rx-prefix '%{F#777}%{F-}' --tx-prefix '%{F#777}%{F-}'
 interval = 1
+
+[module/power]
+type = custom/text
+content-foreground = ${colors.icon}
+content = "襤"
+click-left = sh $HOME/.scripts/polybar-modules/power-menu.sh
 
 [settings]
 screenchange-reload = true
@@ -359,3 +320,44 @@ margin-top = 0
 margin-bottom = 0
 
 ; vim:ft=dosini
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted = "婢 muted"
+label-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = "=="
+bar-volume-fill-font = 2
+bar-volume-empty = "=="
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+

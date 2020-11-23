@@ -42,7 +42,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # Export environment variables
-export PATH="$PATH:$HOME/bin:$HOME/.gem/ruby/2.7.0/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.config/composer/vendor/bin:$HOME/.dotnet/tools"
 export USER_TERMINAL="urxvt"
 export USER_FILEMANAGER="ranger"
 

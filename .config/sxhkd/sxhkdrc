@@ -3,7 +3,7 @@
 ##################
 
 # Screenshots
-ctrl + {_,alt + }Print
+{_,ctrl + }Print
 	RECTANGLE_FORMATTING='%x,%y,%w,%h' && \
 	export OUTPUT_DIRECTORY="$HOME/Pictures/Screenshots" && \
 	{scrot,scrot -a $(slop -f $RECTANGLE_FORMATTING)} -e 'mv $f $$OUTPUT_DIRECTORY && xclip -selection clipboard -t "image/png" $$OUTPUT_DIRECTORY/$n' && \
@@ -15,7 +15,7 @@ XF86Audio{Lower,Raise}Volume
 
 # Backlight control
 XF86MonBrightness{Down,Up}
-	xbacklight -{dec,inc} 10
+	xbacklight -{dec,inc} 20
 
 # Terminal emulator
 super + Return

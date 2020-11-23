@@ -49,7 +49,7 @@ font-2 = Ubuntu Mono NF:pixelsize=22;4
 
 modules-left = bspwm xwindow
 modules-center = 
-modules-right = network-traffic filesystem alsa xkeyboard memory cpu temperature wlan eth battery date power
+modules-right = filesystem alsa xkeyboard memory cpu temperature network-traffic wlan eth battery date power
 
 tray-position = right
 tray-padding = 2
@@ -215,7 +215,8 @@ label = %date% %time%
 [module/alsa]
 type = internal/alsa
 
-;master-soundcard = "hw:0"
+master-soundcard = "hw:0"
+;master-mixer = "PCM"
 master-mixer = "UMC1820 Output"
 interval = 5
 mapped = true

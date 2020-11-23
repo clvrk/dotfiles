@@ -33,7 +33,8 @@ then
 		bytes_current=$(($(cat /sys/class/net/${interface}/statistics/${mode}_bytes | paste -sd '+')))
 		echo $bytes_current > $bytefile
 
-		printf "%s" "${PREFIXES[$mode]}" "$((($bytes_current-$bytes_previous)/1024)) KiB/s$([ $mode = tx ] || echo ' ')"
+		bytes_diff="$((($bytes_current-$bytes_previous)/1024))"
+		printf "%s%4d %5s" "${PREFIXES[$mode]}" "$bytes_diff" "KiB/s$([ $mode = tx ] || echo ' ')"
 	done
 else
 	echo "Network interface \"${interface}\" does not exist"

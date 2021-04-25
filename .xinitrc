@@ -23,7 +23,7 @@ if [ -f "$userresources" ]; then
 	xrdb -merge "$userresources" -DNUM_DISPLAYS=$NUM_DISPLAYS
 
 	if [[ ! -z $(xrandr | grep -E "^DP-1 connected") ]]; then
-		xrandr --output DP-1 --auto --same-as eDP-1
+		xrandr --output DP-1 --mode 1920x1080 --rate 60 --same-as eDP-1
 		xbacklight -set 0
 	fi
 fi
@@ -51,8 +51,10 @@ setxkbmap de &
 xwallpaper --zoom "$HOME/Pictures/Wallpapers/Architecture/wall01.png" &
 
 # Audio daemons
-[ ! -z $(pacman -Qqs qjackctl) ] && qjackctl &
-[ ! -z $(pacman -Qqs cadence) ] && cadence-session-start --start &
+/usr/bin/jackd -r -t1000 -dalsa -dhw:UMC1820 -r44100 -p1024 -n3 &
+pactl load-module module-jack-sink channels=2; pactl load-module module-jack-source channels=2; pacmd set-default-sink jack_out
+#[ ! -z $(pacman -Qqs qjackctl) ] && qjackctl &
+#[ ! -z $(pacman -Qqs cadence) ] && cadence-session-start --start &
 
 picom -b --experimental-backends
 exec bspwm

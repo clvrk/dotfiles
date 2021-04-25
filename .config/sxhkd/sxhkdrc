@@ -3,7 +3,7 @@
 ##################
 
 # Screenshots
-{_,ctrl + }Print
+{_,ctrl +} Print
 	RECTANGLE_FORMATTING='%x,%y,%w,%h' && \
 	export OUTPUT_DIRECTORY="$HOME/Pictures/Screenshots" && \
 	{scrot,scrot -a $(slop -f $RECTANGLE_FORMATTING)} -e 'mv $f $$OUTPUT_DIRECTORY && xclip -selection clipboard -t "image/png" $$OUTPUT_DIRECTORY/$n' && \
@@ -25,8 +25,8 @@ super + BackSpace
 	urxvt -e sh -c $USER_FILEMANAGER
 
 # Program launcher
-super + @space
-	rofi -show run
+super + {_,shift +} @space
+	rofi -show {run, ssh}
 
 XF86Search
 	rofi -show ssh

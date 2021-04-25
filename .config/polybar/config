@@ -49,7 +49,7 @@ font-2 = Ubuntu Mono NF:pixelsize=22;4
 
 modules-left = bspwm xwindow
 modules-center = 
-modules-right = filesystem alsa xkeyboard memory cpu temperature network-traffic wlan eth battery date power
+modules-right = crypto-balance filesystem alsa xkeyboard memory cpu temperature network-traffic wlan eth battery date power
 
 tray-position = right
 tray-padding = 2
@@ -182,7 +182,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp1s0
+interface = enp0s20f0u2
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -215,9 +215,11 @@ label = %date% %time%
 [module/alsa]
 type = internal/alsa
 
-master-soundcard = "hw:0"
-;master-mixer = "PCM"
-master-mixer = "UMC1820 Output"
+;master-soundcard = "hw:0"
+master-soundcard = "hw:CODEC"
+master-mixer = "PCM"
+;master-soundcard = "hw:UMC1820"
+;master-mixer = "UMC1820 Output"
 interval = 5
 mapped = true
 
@@ -299,8 +301,15 @@ label-warn-foreground = ${colors.secondary}
 
 [module/network-traffic]
 type = custom/script
-exec = sh $HOME/.scripts/polybar-modules/network-traffic.sh -i='*' --rx-prefix '%{F#777}%{F-}' --tx-prefix '%{F#777}%{F-}'
 interval = 1
+exec = sh $HOME/.scripts/polybar-modules/network-traffic.sh -i='*' --rx-prefix '%{F#777}%{F-}' --tx-prefix '%{F#777}%{F-}'
+
+[module/crypto-balance]
+type = custom/script
+interval = 5
+exec = sh $HOME/Documents/git-repos/crypto-balance/crypto-balance.sh -p binance -w ETH -c EUR -i -f "$HOME/Documents/Private/balance.txt" --prfx-up "%{F#55aa55}%{F-}" --prfx-down "%{F#a54242}%{F-}" && echo -n "€"
+;exec = if [[ $ENABLE_BALANCE == 1 ]]; then BALANCE=$(sh $HOME/Documents/git-repos/crypto-balance/crypto-balance.sh -p binance -w ETH -c EUR -i -f "$HOME/Documents/Private/balance.txt" --prfx-up "%{F#55aa55}%{F-}" --prfx-down "%{F#a54242}%{F-}"); else BALANCE="--"; fi && printf "%s€" "$BALANCE"
+;click-left = ENABLE_BALANCE=$(cat enable_balance.txt) && (( ENABLE_BALANCE ^= 1 )) > enable_balance.txt
 
 [module/power]
 type = custom/text

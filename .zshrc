@@ -1,12 +1,23 @@
-#
-# ~/.bashrc
-#
+# History
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# (Un)set options
+set -o magicequalsubst
+unsetopt autocd
 
-# Prompt
-PS1='[\u@\h \W]\$ '
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/clark/.zshrc'
+
+autoload -Uz compinit promptinit
+compinit
+promptinit
+
+# Set prompt theme
+prompt redhat
 
 # Start X server on login
 if [[ "$(tty)" = "/dev/tty1" ]]; then
@@ -21,11 +32,8 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
 
-
 # Export environment variables
 export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/gh"
-#export XDG_CONFIG_HOME=
 
+# Load aliases
 source $HOME/.bash_aliases
-
-shopt -s globstar

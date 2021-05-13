@@ -5,7 +5,7 @@ VERSION="1.0.0"
 # Synopsis:
 #	sh pull_kdbx-gdrive.sh -i -u -n <GDRIVE DIR> <REMOTE FILEPATH>
 # Arguments:
-#	-p | --provider
+#	-r | --remote
 #	The remote provider to use. Valid providers are:
 #	gdrive
 #	-i | --interactive
@@ -27,8 +27,7 @@ TEMP_DB_PATH="$TEMP_DIR/.db.kdbx"
 
 # DEFAULT CONFIGURATION
 ARG_BACKUP=1
-ARG_GDRIVE_DIR="$HOME/Cloud/Google Drive"
-ARG_REMOTE_PATH='Documents/Private/Database.kdbx'
+ARG_REMOTE_PATH='/Documents/Private/Database.kdbx'
 
 # Parse user parameters
 i=1
@@ -36,6 +35,9 @@ while [ ! -z ${!i} ]; do
 	j=$(($i+1))
 
 	case ${!i} in
+		"-r") ;&
+		"--remote") ARG_REMOTE="${!j}"
+		;;
 		"-i") ;&
 		"--interactive") ARG_INTERACTIVE=1
 		;;
@@ -52,13 +54,6 @@ while [ ! -z ${!i} ]; do
 	i=$j
 done
 
-# remote <action> "<source path>" "<destination path>"
-function remote() {
-	pushd "$ARG_GDRIVE_DIR" 1> /dev/null
-	drive $@
-	popd 1> /dev/null
-}
-
 function rmTmpDb {
 	# Check if previous *.kdbx exists
 	if [[ -f $TEMP_DB_PATH ]]; then
@@ -68,8 +63,8 @@ function rmTmpDb {
 }
 
 ###
-if [[ -z $ARG_GDRIVE_DIR ]]; then
-	echo "\"credentials.json\" not specified..."
+if [[ -z $ARG_REMOTE ]]; then
+	echo "Remote not specified..."
 	exit 1
 fi
 
@@ -86,7 +81,7 @@ fi
 rmTmpDb "previous "
 
 printf "Pulling file from remote...\n"
-remote pull -piped "$ARG_REMOTE_PATH" > $TEMP_DB_PATH
+rclone copyto "${ARG_REMOTE}:${ARG_REMOTE_PATH}" "${TEMP_DB_PATH}"
 # Generate checksum of unmodified file
 CHECKSUM=$(md5sum $TEMP_DB_PATH)
 # Execute KeePass
@@ -109,13 +104,14 @@ if [[ $CHECKSUM != $(md5sum $TEMP_DB_PATH) ]]; then
 		if [[ -n $ARG_BACKUP ]]; then
 			printf "Creating copy on remote...\n"
 			REMOTE_COPY_PATH=$(dirname "$ARG_REMOTE_PATH")/$(date +'%Y-%m-%d_%H-%M-%S')_$(basename "$ARG_REMOTE_PATH")
-			remote copy "$ARG_REMOTE_PATH" "$REMOTE_COPY_PATH" 1> /dev/null
+			rclone copyto "${ARG_REMOTE}:${ARG_REMOTE_PATH}" "${ARG_REMOTE}:${REMOTE_COPY_PATH}"
+			rclone delete "${ARG_REMOTE}:${ARG_REMOTE_PATH}"
 		fi
 
 		printf "Pushing file to remote...\n"
 		pushd "$ARG_GDRIVE_DIR" 1> /dev/null
 		#echo "/$ARG_REMOTE_PATH.bak"
-		cat "$TEMP_DB_PATH" | drive push -force -piped "$ARG_REMOTE_PATH"
+		rclone copyto "${TEMP_DB_PATH}" "${ARG_REMOTE}:${ARG_REMOTE_PATH}"
 		popd 1> /dev/null
 	fi
 else

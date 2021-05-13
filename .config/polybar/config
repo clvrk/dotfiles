@@ -28,7 +28,7 @@ alert = #bd2c40
 icon = #777
 
 [bar/clarkbar]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:}
 width = 100%
 height = 27
 radius = 0.0
@@ -45,11 +45,12 @@ module-margin-right = 2
 
 font-0 = Ubuntu Mono:pixelsize=11;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = Ubuntu Mono NF:pixelsize=22;4
+font-2 = UbuntuMono NF:pixelsize=22;4
 
 modules-left = bspwm xwindow
 modules-center = 
-modules-right = crypto-balance filesystem alsa xkeyboard memory cpu temperature network-traffic wlan eth battery date power
+modules-right = filesystem alsa xkeyboard memory cpu temperature wlan eth battery date power
+;modules-right = crypto-balance filesystem alsa xkeyboard memory cpu temperature network-traffic wlan eth battery date power
 
 tray-position = right
 tray-padding = 2

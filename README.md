@@ -36,7 +36,7 @@ These packages are **required** for my configuration to work.
 
 **Official:**
 ```
-# pacman -S git openssh bspwm sxhkd xwallpaper rofi dunst alacritty ttf-ubuntu-font-family breeze-gtk jack2 qjackctl alsa-utils
+# pacman -S git openssh xorg-server xorg-xinit bspwm sxhkd xwallpaper rofi dunst alacritty slop scrot jack2 qjackctl ttf-ubuntu-font-family alsa-utils breeze-gtk
 ```
 
 **AUR:** \
@@ -45,9 +45,16 @@ These packages are **required** for my configuration to work.
 
 \* *picom git release is required for kawase blur*
 
+Install with yay:
+```
+# yay -S picom-git polybar
+```
 
 ### Optional dependencies
-These packages are completely optional, however it is recommended to install them anyway, e.g. for [my scripts]() to work.
+These packages are completely optional, however it is recommended to install them anyway, e.g. for [my scripts](https://github.com/clarkx86/dotfiles/tree/master/.scripts) to work.
+#### Package management
+**AUR:**\
+[yay](https://aur.archlinux.org/packages/yay/)
 #### Script dependencies
 These dependencies are optional and, though recommended, only required for the included scripts to work:
 ```
@@ -60,16 +67,26 @@ These dependencies are optional and, though recommended, only required for the i
 # pacman -S docker dotnet-sdk
 ```
 **AUR:** \
-[Visual Studio Code (Microsoft branded *)]()
+[Visual Studio Code (Microsoft branded *)](https://aur.archlinux.org/packages/visual-studio-code-bin/)
 
 \* *The Microsoft branded release is required for debugging C# applications* 
 
+Install with yay:
+```
+# yay -S visual-studio-code-bin
+```
+
+#### Virtualization packages
+```
+$ pacman -S qemu libvirt edk2-ovmf virt-manager iptables-nft dnsmasq
+```
 
 #### Software recommendations
 Cool and awesome software that I probably will need after every new installation.
+
 **Official:**
 ```
-# pacman -S keepassxc firefox-developer-edition thunderbird neomutt neovim zip unzip gimp inkscape blender 
+# pacman -S neofetch keepassxc firefox-developer-edition thunderbird neomutt neovim zip unzip gimp inkscape blender 
 ```
 **AUR:** \
-[Spotify]()
+[Spotify](https://aur.archlinux.org/packages/spotify/)

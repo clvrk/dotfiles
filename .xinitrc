@@ -43,7 +43,7 @@ fi
 
 # Export environment variables
 export PATH="$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.config/composer/vendor/bin:$HOME/.dotnet/tools"
-export USER_TERMINAL="urxvt"
+export USER_TERMINAL="alacritty"
 export USER_FILEMANAGER="ranger"
 
 # Keyboard layout & window manager
@@ -51,10 +51,15 @@ setxkbmap de &
 xwallpaper --zoom "$HOME/Pictures/Wallpapers/Architecture/wall01.png" &
 
 # Audio daemons
-/usr/bin/jackd -r -t1000 -dalsa -dhw:UMC1820 -r44100 -p1024 -n3 &
+/usr/bin/jackd -r -t1000 -dalsa -dhw:CODEC -r44100 -p1024 -n3 &
 pactl load-module module-jack-sink channels=2; pactl load-module module-jack-source channels=2; pacmd set-default-sink jack_out
 #[ ! -z $(pacman -Qqs qjackctl) ] && qjackctl &
 #[ ! -z $(pacman -Qqs cadence) ] && cadence-session-start --start &
+
+# Fix webcam autofocus
+if [[ -n $(v4l2-ctl --list-devices | grep -i "LifeCam HD-5000") ]]; then
+	v4l2-ctl --device /dev/video0 -c focus_auto=0
+fi
 
 picom -b --experimental-backends
 exec bspwm

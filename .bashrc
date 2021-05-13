@@ -23,6 +23,7 @@ fi
 
 
 # Export environment variables
+export EDITOR="vim"
 export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/gh"
 #export XDG_CONFIG_HOME=
 

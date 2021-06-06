@@ -48,7 +48,8 @@ export USER_FILEMANAGER="ranger"
 
 # Keyboard layout & window manager
 setxkbmap de &
-xwallpaper --zoom "$HOME/Pictures/Wallpapers/Architecture/wall01.png" &
+xwallpaper --zoom "$HOME/Pictures/Wallpapers/Cities/pink-industrial01.png" &
+#xwallpaper --zoom "$HOME/Pictures/Wallpapers/Architecture/wall01.png" &
 
 # Audio daemons
 /usr/bin/jackd -r -t1000 -dalsa -dhw:CODEC -r44100 -p1024 -n3 &

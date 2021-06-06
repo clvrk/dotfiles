@@ -17,9 +17,8 @@
 ;==========================================================
 
 [colors]
-background = ${xrdb:background}
-background-alt = #444
-;foreground = ${xrdb:color7:#222}
+background = #e7222222
+background-alt = #ff9900
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
@@ -46,10 +45,12 @@ module-margin-right = 2
 font-0 = Ubuntu Mono:pixelsize=11;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = UbuntuMono NF:pixelsize=22;4
+font-3 = UbuntuMono NF:pixelsize=14;3
 
 modules-left = bspwm xwindow
 modules-center = 
-modules-right = filesystem alsa xkeyboard memory cpu temperature wlan eth battery date power
+modules-right = crypto-balance filesystem alsa xkeyboard memory cpu temperature wlan eth battery date power
+;modules-right = filesystem alsa xkeyboard memory cpu temperature wlan eth battery date power
 ;modules-right = crypto-balance filesystem alsa xkeyboard memory cpu temperature network-traffic wlan eth battery date power
 
 tray-position = right
@@ -98,26 +99,27 @@ label-mounted-foreground = ${colors.icon}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.icon}
 
-;format-mounted = " <label-mounted>"
-
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused = 
+label-focused-foreground = ${colors.background-alt}
+label-focused-padding = 1
 
-label-occupied = %index%
-label-occupied-padding = 2
+label-occupied = 
+label-occupied-foreground = #777
+label-occupied-padding = 1
 
-label-urgent = %index%!
+label-urgent = 
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 1
 
-label-empty =
+label-empty = 
 label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
+label-empty-padding = 1
+
+format = <label-state>
+format-font = 4
 
 reverse-scroll = false
 
@@ -240,12 +242,12 @@ bar-volume-foreground-3 = #55aa55
 bar-volume-foreground-4 = #55aa55
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
+bar-volume-gradient = true
+bar-volume-indicator = ""
 bar-volume-indicator-font = 1
-bar-volume-fill = "=="
+bar-volume-fill = "██"
 bar-volume-fill-font = 1
-bar-volume-empty = "=="
+bar-volume-empty = "██"
 bar-volume-empty-font = 1
 bar-volume-empty-foreground = ${colors.foreground-alt}
 

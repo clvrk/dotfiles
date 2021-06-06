@@ -8,6 +8,9 @@ set -o magicequalsubst
 unsetopt autocd
 
 bindkey -v
+bindkey -- "${terminfo[khome]}" beginning-of-line
+bindkey -- "${terminfo[kend]}"  end-of-line
+bindkey -- "${terminfo[kdch1]}" delete-char
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/clark/.zshrc'
@@ -37,3 +40,7 @@ export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/gh"
 
 # Load aliases
 source $HOME/.bash_aliases
+
+# Source zsh extensions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

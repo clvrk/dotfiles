@@ -1,0 +1,26 @@
+#!/bin/sh
+# Author: clvrk
+#					contact[at]clvrk.io
+# Description: A small script to toggle the background opacity in several terminal emulators.
+
+MIN_OPACITY=$2
+MAX_OPACITY=$3
+
+function toggleval() {
+	if (( $(echo "$1 < $MAX_OPACITY" | bc -l) )); then
+		echo -n $MAX_OPACITY
+	else
+		echo -n $MIN_OPACITY
+	fi
+}
+
+case $1 in
+	"alacritty")
+		CONFIG_PATH="$HOME/.config/alacritty/alacritty.yml"
+		CURRENT_OPACITY=$(awk '/background_opacity/ { print $2 }' $CONFIG_PATH)
+		NEW_OPACITY=$(toggleval $CURRENT_OPACITY)
+
+		# Replace value
+		awk -i inplace -v cur=$CURRENT_OPACITY -v new=$NEW_OPACITY '{ if ($0 ~ /background_opacity/) { sub(cur, new) }; print }' $CONFIG_PATH
+		;;
+esac

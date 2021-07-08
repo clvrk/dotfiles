@@ -20,7 +20,9 @@ compinit
 promptinit
 
 # Set prompt theme
-prompt redhat
+#prompt redhat
+#PROMPT='[%n@%m %1~]%(#.#.$) '
+PROMPT='%B[%b%F{208}%n%F{209}@%F{210}%m%f %F{141}%1~%f%B]%b%(#.#.$) '
 
 # Start X server on login
 if [[ "$(tty)" = "/dev/tty1" ]]; then
@@ -44,3 +46,20 @@ source $HOME/.bash_aliases
 # Source zsh extensions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Start Tmux session
+#if [ ! $(tty) = "/dev/tty1" ] && [ -z $TMUX ] && type tmux 1> /dev/null; then
+#  SESSIONS=$(tmux list-sessions 2> /dev/null | grep -E 'session-[0-9]+')
+#	SESSIONS_ATTACHED=$(echo $SESSIONS | grep -v "attached" | sed -E 's/:.+$//')
+
+	# Kill orphaned sessions
+	#if [[ -n $SESSIONS_ATTACHED ]]; then
+		#echo $SESSIONS_ATTACHED | \
+		#while IFS= read -r session; do
+			#tmux kill-session -t $session
+		#done
+	#fi
+	
+#	tmux new-session -s "session-$(if [ -z $SESSIONS ]; then echo 0; else echo $SESSIONS | wc -l; fi)"
+#  exit 0
+#fi

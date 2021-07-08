@@ -49,7 +49,8 @@ font-3 = UbuntuMono NF:pixelsize=14;3
 
 modules-left = bspwm xwindow
 modules-center = 
-modules-right = crypto-balance filesystem alsa xkeyboard memory cpu temperature wlan eth battery date power
+modules-right = filesystem alsa xkeyboard memory cpu temperature wlan eth battery date power
+;modules-right = crypto-balance filesystem alsa xkeyboard memory cpu temperature wlan eth battery date power
 ;modules-right = filesystem alsa xkeyboard memory cpu temperature wlan eth battery date power
 ;modules-right = crypto-balance filesystem alsa xkeyboard memory cpu temperature network-traffic wlan eth battery date power
 

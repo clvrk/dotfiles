@@ -1,0 +1,6 @@
+# Export environment variables
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export PATH="$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.config/composer/vendor/bin:$HOME/.dotnet/tools"
+export USER_TERMINAL="alacritty"
+export USER_FILEMANAGER="ranger"

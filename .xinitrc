@@ -33,7 +33,6 @@ if [ -f "$usermodmap" ]; then
 fi
 
 # start some nice programs
-
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
   [ -x "$f" ] && . "$f"
@@ -44,15 +43,11 @@ fi
 # Set default cursor
 xsetroot -cursor_name left_ptr
 
-# Export environment variables
-export PATH="$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.config/composer/vendor/bin:$HOME/.dotnet/tools"
-export USER_TERMINAL="alacritty"
-export USER_FILEMANAGER="ranger"
+[ -f ~/.xprofile ] && . ~/.xprofile
 
 # Keyboard layout & window manager
 setxkbmap de &
-xwallpaper --zoom "$HOME/Pictures/Wallpapers/Cities/pink-industrial01.png" &
-#xwallpaper --zoom "$HOME/Pictures/Wallpapers/Architecture/wall01.png" &
+xwallpaper --zoom ""$HOME/Pictures/Wallpapers/Architecture/wish-you-were-here-fixed.png" &
 
 # Audio daemons
 /usr/bin/jackd -r -t1000 -dalsa -dhw:CODEC -r44100 -p1024 -n3 &

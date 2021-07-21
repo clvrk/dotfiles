@@ -82,7 +82,7 @@ explain "First of all, we will update the package index..."
 writeSection "INSTALLING BASE PACKAGES"
 explain "Now we will install the base dependencies..."
 
-PACKAGES_BASE=(git openssh xorg-server xorg-xinit xorg-xrandr xorg-xsetroot tmux neovim bspwm sxhkd xwallpaper rofi dunst alacritty slop scrot xclip jack2 qjackctl pulseaudio pulseaudio-jack ttf-ubuntu-font-family alsa-utils zsh zsh-syntax-highlighting zsh-autosuggestions breeze-gtk)
+PACKAGES_BASE=(git openssh xorg-server xorg-xinit xorg-xrandr xorg-xsetroot tmux neovim bspwm sxhkd xwallpaper rofi dunst alacritty slop scrot xclip jack2 qjackctl pulseaudio pulseaudio-jack ttf-ubuntu-font-family noto-fonts-emoji alsa-utils zsh zsh-syntax-highlighting zsh-autosuggestions breeze-gtk)
 
 #pacman -S --noconfirm $(echo $PACKAGES_BASE)
 

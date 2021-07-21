@@ -1,7 +1,7 @@
 # Set aliases
-alias ls='ls --color=auto'
-alias ll='ls -lh'
-alias la='ls -lhA'
+alias ls='exa --color=auto'
+alias ll='exa -l'
+alias la='exa -la'
 alias rm='rm -v'
 alias cp='cp -v'
 alias mv='mv -v'

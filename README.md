@@ -36,7 +36,7 @@ These packages are **required** for my configuration to work.
 
 **Official:**
 ```
-# pacman -S git openssh xorg-server xorg-xinit xorg-xrandr xorg-xsetroot bspwm sxhkd xwallpaper rofi dunst alacritty slop scrot xclip jack2 qjackctl pulseaudio pulseaudio-jack ttf-ubuntu-font-family alsa-utils zsh zsh-syntax-highlighting zsh-autosuggestions breeze-gtk
+# pacman -S git openssh xorg-server xorg-xinit xorg-xrandr xorg-xsetroot bspwm sxhkd xwallpaper rofi dunst alacritty slop scrot xclip jack2 qjackctl pulseaudio pulseaudio-jack ttf-ubuntu-font-family alsa-utils zsh zsh-syntax-highlighting zsh-autosuggestions breeze-gtk exa
 ```
 
 **AUR:** \

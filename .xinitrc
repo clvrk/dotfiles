@@ -47,7 +47,7 @@ xsetroot -cursor_name left_ptr
 
 # Keyboard layout & window manager
 setxkbmap de &
-xwallpaper --zoom ""$HOME/Pictures/Wallpapers/Architecture/wish-you-were-here-fixed.png" &
+xwallpaper --zoom "$HOME/Pictures/Wallpapers/Architecture/wish-you-were-here-fixed.png" &
 
 # Audio daemons
 /usr/bin/jackd -r -t1000 -dalsa -dhw:CODEC -r44100 -p1024 -n3 &

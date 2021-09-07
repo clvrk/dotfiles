@@ -18,7 +18,8 @@ bspc rule -a Screenkey	manage=off
 bspc rule -a Peek	state=floating
 bspc rule -a QjackCtl	desktop='^10'	state=floating
 
-pgrep bspswallow || $HOME/bin/bspswallow &
+# Window swallowing
+#pgrep bspswallow || $HOME/bin/bspswallow &
 
 # Polybar
 BAR=clarkbar

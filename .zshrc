@@ -47,6 +47,26 @@ source $HOME/.bash_aliases
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Key bindings
+typeset -g -A key
+
+key[Home]="${terminfo[khome]}"
+key[End]="${terminfo[kend]}"
+
+# setup key accordingly
+[[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"	beginning-of-line
+[[ -n "${key[End]}"       ]] && bindkey -- "${key[End]}"	end-of-line
+
+# Finally, make sure the terminal is in application mode, when zle is
+# active. Only then are the values from $terminfo valid.
+if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
+	autoload -Uz add-zle-hook-widget
+	function zle_application_mode_start { echoti smkx }
+	function zle_application_mode_stop { echoti rmkx }
+	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+fi
+
 # Start Tmux session
 #if [ ! $(tty) = "/dev/tty1" ] && [ -z $TMUX ] && type tmux 1> /dev/null; then
 #  SESSIONS=$(tmux list-sessions 2> /dev/null | grep -E 'session-[0-9]+')

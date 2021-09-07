@@ -33,7 +33,7 @@ XF86Search
 
 # Toggle terminal emulator opacity
 super + c
-	toggle-term-opacity $USER_TERMINAL 0.75 1
+	toggle-term-opacity $USER_TERMINAL 0.9 1
 
 # make sxhkd reload its configuration files:
 super + Escape

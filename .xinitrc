@@ -59,4 +59,5 @@ if [[ -n $(v4l2-ctl --list-devices | grep -i "LifeCam HD-5000") ]]; then
 fi
 
 picom -b --experimental-backends
+#exec openbox-session
 exec bspwm

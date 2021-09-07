@@ -14,12 +14,16 @@ set shiftwidth=2
 " Specify a directory for plugins
 call plug#begin(stdpath('data') . '/plugged')
 
+" Features
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+" Theming
 Plug 'sainnhe/edge'
 
 " Syntax highlighting
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'octol/vim-cpp-enhanced-highlight'					" C++
 
 " Initialize plugin system
 call plug#end()

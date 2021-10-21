@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+args=
+path=
+i=1
+while [[ -n ${!i} ]]; do
+	[[ $i != $# ]] && args="${args} ${!i}" || path="${!i}"
+	i=$((i+1))
+done
+
+#echo -e "Arguments:\t$args"
+#echo -e "Path:\t\t$path"
+
+exists=$([ -f $path ] && echo -n true)
+
+tmpfile="$([[ -n $exists ]] && echo -n '/tmp/diffedit-' && md5sum "$path" 2> /dev/null | cut -c -7 || echo -n $path)"
+echo $tmpfile
+
+if [[ -f $path ]]; then
+	cp -v $path $tmpfile
+fi
+
+$EDITOR $args $tmpfile
+
+if [[ -n $exists ]]; then
+	diff $path $tmpfile
+	echo -n "Do you want to keep the changes? (Y/N) " && read
+	[[ $REPLY == 'y' ]] && mv -v $tmpfile $path || rm -v $tmpfile
+else
+	echo "No previous file"
+fi
+
